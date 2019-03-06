@@ -26,7 +26,7 @@ public class AddEmployee extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
@@ -37,7 +37,7 @@ public class AddEmployee extends HttpServlet {
 		String location = request.getParameter("location");
 		try {
 
-			String dateformat = "MM/dd/yy";
+			String dateformat = "MM/dd/yyyy";
 			if (dob.indexOf("-") > 0) {
 				dateformat = "dd-MM-yy";
 			}
@@ -58,17 +58,26 @@ public class AddEmployee extends HttpServlet {
 			employeeService.createEmployee(employee);
 
 		} catch (SQLException | ParseException e) {
+			String message = "Record has not been succesfully saved!!!";
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(message);
 			throw new ServletException(e.getMessage()); 
 		}
-		request.setAttribute("message", "Created new Employee "+name);
-		response.sendRedirect("AddEmployee.html");
+		
+		String text = "Record has been succesfully saved!!!";
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(text);
+		
+		//request.setAttribute("message", "Created new Employee "+name);
+		//response.sendRedirect("AddEmployee.html");
 	}
-
 	 // Method to handle POST method request.
-	   public void doPost(HttpServletRequest request, HttpServletResponse response)
+	  /* public void doPost(HttpServletRequest request, HttpServletResponse response)
 	      throws ServletException, IOException {
 	      
 	      doGet(request, response);
-	   }
+	   }*/
 }
 

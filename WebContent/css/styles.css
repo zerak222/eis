@@ -5,6 +5,8 @@ body {
 	 height:100%;
 	 padding:0;
 	font-family: 'Montserrat', sans-serif;
+	line-height:1.6;
+	font-size:17px;
 	 margin:0}
 	 
 /* Slideshow container */
@@ -154,4 +156,98 @@ position: realtive;
   to {opacity: 1}
 }
 
+.button {
+	padding:1em 2em;
+	color:#fff; 
+	border:0;
+}
+
+.modal {
+display:none;
+position:fixed;
+z-index:1;
+left:0;
+top:0;
+height:100%;
+width:100%;
+overflow:auto;
+background-color:rgba(0,0,0,0.5);
+}
+
+.editform{
+	 cursor: pointer;
+	  border: none;
+	  background-color: coral;
+	  font-size:20px;
+	  float:right;
+	  margin:10px;
+}
+.showEmployeeModal {
+display:none;
+position:fixed;
+z-index:1;
+left:0;
+top:0;
+height:100%;
+width:100%;
+overflow:auto;
+background-color:rgba(0,0,0,0.5);
+}
+
+.modal-content {
+	background-color:#f4f4f4;
+	margin: 30% auto;
+	width:45%;
+	box-shadow:0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0  rgba(0,0,0,0.17);
+    animation-name:modalopen;
+	animation-duration:3s;
+	}
+
+.modal-header {
+	background:coral;
+	padding:15px;
+	color:#fff;
+}
+	
+.modal-header h2, .modal-footer h3 {
+	margin:0;
+}
+	
+.modal-footer {
+	background:coral;
+	padding:10px;
+	color:#fff;
+	text-align: center;
+}
+.modal-body {
+	padding:10px 20px;
+}
+	
+#closeBtn {
+	color:#ccc;
+	float:right;
+	font-size:30px;
+	display:inline;
+}
+
+#closeBtn1 {
+	color:#ccc;
+	float:right;
+	font-size:30px;
+}
+
+#closeBtn:hover, #closeBtn:focus {
+color:#000;
+text-decoration:none;
+cursor:pointer;
+}
+
+@keyframes modalopen{
+	from{ opacity : 0}
+	to {opacity:1}
+}
+
+.message{
+	text-color:black;
+}
 
