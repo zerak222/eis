@@ -17,17 +17,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
-
-
-
-
-
-
-
-
-
-
+<body onload="getEmployees()">
 <!-- <div class="modal fade" id="ShowEmployeeList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -49,7 +39,6 @@
 				</button>
 			</div>
 			<c:forEach items="${allEmployeesList}" var="post">
-
 				<ul class="grid">
 					<li>
 						<div class="parent"
@@ -89,23 +78,6 @@
     </div>
   </div>
 </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 
 </body>
 
@@ -156,6 +128,20 @@ div.grid-view-actions {
 </style>
 
 <script>
+
+ var allEmployeesList;
+ function getEmployees(){
+	 $.ajax({
+		 url : 'ShowEmployeeList',
+		 async:false,
+		 type : 'post',
+		 success : function(allEmployees) {
+			 allEmployeesList = allEmployees; 
+		 },
+		 error : function(responseText) {
+		 }
+	 });
+}
 	$('button').click(function(e) {
 		if ($(this).hasClass('grid')) {
 			$('#container ul').removeClass('list').addClass('grid');

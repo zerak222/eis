@@ -5,25 +5,25 @@
 <title>Add Employee</title>
 </head>
 <body>
-<form action="AddEmployee" method="post">
+	<form id="myForm">
 		<table width="20%" border="0" cellspacing="10" cellpadding="10"
 			align="center" frame="box">
 			<tr>
 				<td><label>Name</label></td>
-				<td><input type="text" name="name" required></td>
+				<td><input type="text" name="name" id="name" required></td>
 			</tr>
 			<tr>
 				<td><label>Email</label></td>
-				<td><input type="email" name="email" required></td>
+				<td><input type="email" name="email" id="email" required></td>
 			</tr>
 			<tr>
 				<td><label>Phone</label></td>
-				<td><input type="number" name="phone" required></td>
+				<td><input type="number" name="phone" id="phone" required></td>
 			</tr>
 			<tr>
 				<td><label>Gender</label></td>
-				<td><input type="radio" name="gender" value="M">Male
-				    <input	type="radio" name="gender" value="F">Female</td>
+				<td><input type="radio" name="gender" value="M" id="gender">Male
+					<input type="radio" name="gender" value="F" id="gender">Female</td>
 			</tr>
 			<tr>
 				<td><label>DOB</label></td>
@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td><label>Designation</label></td>
-				<td><select name="designation">
+				<td><select name="designation" id="designation">
 						<option value="INT">INTERN</option>
 						<option value="ASE">ASSOCIATE SOFTWARE ENGINEER</option>
 						<option value="SE">SOFTWARE ENGINEER</option>
@@ -40,22 +40,21 @@
 			</tr>
 			<tr>
 				<td><label>Location</label></td>
-				<td><select name="location">
+				<td><select name="location" id="location">
 						<option value="IN">IN</option>
 						<option value="NL">NL</option>
 				</select></td>
 			</tr>
 			<tr>
-				<td>Actions</td>
-				<td><input type="submit" name="AddEmployee" value="Save"></td>
-				<td><input type="reset" value="Cancel"></td>
+				<td><input type="submit" id="saveEmployee" value="Save Employee"></td>
+				<td><input type="reset" value="Clear"></td>
+			</tr>
+			<tr>
+			<td>
+				<p class="message" id="data-message" style="color: black;"></p>
+				</td>
 			</tr>
 		</table>
-	</form>
-	<form>
-	<div>
-	<button type="submit" id="button2" formaction="ShowEmployeeList" method="post">Show all Employees</button>
-	</div>
 	</form>
 </body>
 </html>

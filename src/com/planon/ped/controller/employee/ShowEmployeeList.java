@@ -3,7 +3,7 @@ package com.planon.ped.controller.employee;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
+import com.google.gson.Gson;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +26,7 @@ public class ShowEmployeeList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		Gson gson = new Gson();
 		List<EmployeeData> allEmployeesList = null;
 		try {
 			EmployeeService empServices = new EmployeeService();
@@ -34,10 +34,9 @@ public class ShowEmployeeList extends HttpServlet {
 		} catch (SQLException e) {
 			throw new ServletException(e.getMessage()); 
 		}
-		response.setContentType("text/html");  
-        request.setAttribute("allEmployeesList", allEmployeesList);
-        getServletConfig().getServletContext().getRequestDispatcher("/ShowEmployeeList.jsp").forward(request, response);
-
+		response.setContentType("application/json");  
+		String json = gson.toJson(allEmployeesList);
+		response.getWriter().write(json);
 		}
 	 // Method to handle POST method request.
 	   public void doPost(HttpServletRequest request, HttpServletResponse response)
