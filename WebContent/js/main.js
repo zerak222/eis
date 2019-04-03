@@ -8,12 +8,28 @@
 	        height: 800,
 	        width: 1000,
 	        title: 'Add Employee',
-	        buttons: {
-	            Cancel: function() {
-	              $( this ).dialog( "close" );
+	        buttons:[
+	        {    		
+	          id:"edit",
+	          text:"Edit",
+	          click:function()
+	            {$(addEmployeeForm).find(':input(:disabled)').prop('disabled',false);
+	            $(addEmployeeForm).find('#saveEmployee').hide();
+	            $(addEmployeeForm).find('#updateEmployee').show();
+	            $(addEmployeeForm).data("update",1);
 	            }
-	          }
+	        },
+	        {
+	           id:"cancel",
+	 	       text:"Cancel",
+	           click: function() 
+	              {$( this ).dialog( "close" );}
+	            
+	         }
+	    ]
 	    });
+	 
+	 $("#edit").button("option", "disabled", true);
 	 
 	 showEmployeeDialog = $('<div></div>')
 	 .html('<iframe id="frame" style="border: 0px; " src="ShowEmployeeList.jsp" width="100%" height="100%"></iframe>')
@@ -46,14 +62,23 @@
 	 
 	 $("#addEmployee").button().on( "click", function() {
 		 addEmployeeDialog.dialog('open'); 
-		    var ifr = document.getElementById( "frame" );
-			 var ifrDoc = ifr.contentDocument || ifr.contentWindow.document;
-			 addEmployeeForm= ifrDoc.getElementById( "myForm" );
-			 addEmployeeForm.addEventListener( "submit", function( event ) {
-			      event.preventDefault();
-			      saveEmployee($( this ).serializeArray());
-			    });
-	 });
+		 var ifr = document.getElementById( "frame" );
+		 var ifrDoc = ifr.contentDocument || ifr.contentWindow.document;
+		 addEmployeeForm= ifrDoc.getElementById( "myForm" );
+
+		 addEmployeeForm.addEventListener( "submit", function( event ) {
+			 event.preventDefault();
+			 if($(this).data("update")=="1")
+				 {
+			 updateEmployee($( this ).serializeArray());}
+			 else
+				 {
+				 saveEmployee($( this ).serializeArray());}
+				 
+		 })
+	 }
+	 );
+	
 	 
 	 $("#showEmployees").button().on( "click", function() {
 		 showEmployeeDialog.dialog('open');
@@ -67,6 +92,7 @@
 			type : 'post',
 			success : function(responseText) {
 				$(addEmployeeForm).find(':input:not(:disabled)').prop('disabled',true)
+				 $("#edit").button("option", "disabled", false);
 				confirmationDialog.html(responseText).dialog('open');
 			},
 			error : function(responseText) {
@@ -74,4 +100,23 @@
 			}
 		});
 	}
+	 
+	 function updateEmployee(aData){
+			$.ajax({
+				url : 'UpdateEmployee',
+				async:false,
+				data : aData,
+				type : 'post',
+				success : function(responseText) {
+					$(addEmployeeForm).find(':input:not(:disabled)').prop('disabled',true)
+					 $("#edit").button("option", "disabled", false);
+					confirmationDialog.html(responseText).dialog('open');
+				},
+				error : function(responseText) {
+					confirmationDialog.html(responseText).dialog('open');
+				}
+			});
+		}
+	 
+	
 	});
