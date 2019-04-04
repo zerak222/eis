@@ -1,5 +1,7 @@
- $(document).ready(function() {
-	 var addEmployeeDialog , confirmationDialog, addEmployeeForm , showEmployeeDialog;
+ var addEmployeeDialog , confirmationDialog, addEmployeeForm , showEmployeeDialog;
+	 var showEmployeeClicked = false; 
+$(document).ready(function() {
+	
 	 addEmployeeDialog = $('<div></div>')
 	    .html('<iframe id="frame" style="border: 0px; " src="AddEmployee.html" width="100%" height="100%"></iframe>')
 	    .dialog({
@@ -31,20 +33,21 @@
 	 
 	 $("#edit").button("option", "disabled", true);
 	 
-	 showEmployeeDialog = $('<div></div>')
-	 .html('<iframe id="frame" style="border: 0px; " src="ShowEmployeeList.jsp" width="100%" height="100%"></iframe>')
-	    .dialog({
-	        autoOpen: false,
-	        modal: true,
-	        height: 800,
-	        width: 1000,
-	        title: 'Add Employee',
-	        buttons: {
-	            Cancel: function() {
-	              $( this ).dialog( "close" );
-	            }
-	          }
-	    });
+		 showEmployeeDialog = $('<div></div>')
+		 .html('<iframe id="frame" style="border: 0px; " src="ShowEmployeeList.jsp" width="100%" height="100%"></iframe>')
+		    .dialog({
+		        autoOpen: false,
+		        modal: true,
+		        height: 800,
+		        width: 1000,
+		        title: 'Employee List',
+		        buttons: {
+		            Cancel: function() {
+		              $( this ).dialog( "close" );
+		            }
+		          }
+		    });
+	
 	
 	 confirmationDialog = $('<div></div>')
 	        .dialog({
@@ -83,6 +86,8 @@
 	 $("#showEmployees").button().on( "click", function() {
 		 showEmployeeDialog.dialog('open');
 	 });
+	 
+
 	 
 	 function saveEmployee(aData){
 		$.ajax({

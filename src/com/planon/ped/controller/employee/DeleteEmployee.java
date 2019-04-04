@@ -14,7 +14,7 @@ import com.planon.ped.dao.EmployeeDaoIMPL;
 /**
  * Servlet implementation class DeleteEmployee
  */
-@WebServlet("/DeleteEmployee")
+@WebServlet("/deleteEmployee")
 public class DeleteEmployee extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
