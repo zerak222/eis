@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 	static Connection con = null;
-	public static final String URL = "jdbc:sqlserver://" + "pc13099" + ":" + 1433 + ";" + "databaseName=" + "PEM"
-			+ ";username=" + "PEM" + ";password=" + "Plan$QL" + ";";
+	public static final String URL = "jdbc:sqlserver://" + "pc13099" + ":" + 1433 + ";" + "databaseName=" + "EIS"
+			+ ";username=" + "EIS" + ";password=" + "Plan$QL" + ";";
 
 	public static Connection getConnection() {
 

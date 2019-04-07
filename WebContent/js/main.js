@@ -56,6 +56,7 @@ $(document).ready(function() {
 	        height: 300,
 	        width: 400,
 	        title: 'Add Employee',
+	        dialogClass:"myClass",
 	        buttons: {
 	            OK : function() {
 	              $( this ).dialog( "close" );
