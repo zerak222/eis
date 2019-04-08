@@ -18,32 +18,14 @@
 <title>Insert title here</title>
 </head>
 <body onload = "getEmployees()">
-      <div
-		style="margin: 200px 200px 300px 300px; padding: 50px 50px 50px 50px; ">
+      <div class = 'eisparent'>
 		<div id="container">
-			<div class="buttons" style="float: right; margin-top: -60px; margin-right: -200px;">
-				<button class="grid " title = "Grid View">
-					<i id = "gridButton" class="material-icons "> view_module </i>
-				</button>
-				<button class="list " style = "color:darkgray" title = "List View">
-					<i id = "listbutton" class="material-icons "> view_list </i>
-				</button>
-			</div>
 			<ul class="grid">
 			<div id = "listGridDiv"></div>
 		</ul>
 		
 		</div>
 	</div>
-      <!-- modal body ends here -->
-    <!--   </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 <script type="text/javascript">
 var divHTML = "";
 function getEmployees(){
@@ -68,18 +50,7 @@ function getEmployees(){
 	 });
 }
 
-	$('button').click(function(e) {
-		if ($(this).hasClass('grid')) {
-			$('#container ul').removeClass('list').addClass('grid');
-			$('#listbutton').css('color','darkgray')
-			$('#gridButton').css('color','black')
-		} else if ($(this).hasClass('list')) {
-			$('#container ul').removeClass('grid').addClass('list');
-			$('#gridButton').css('color','darkgray')
-			$('#listbutton').css('color','black')
-		}
-	});
-	
+
 	 $('#employee-actions-grid-delete').click(function(aData){
 			$.ajax({
 				url : 'deleteEmployee',
@@ -151,7 +122,10 @@ div.grid-view-actions {
     margin-right: -250px;
 }
 
-
+.eisparent {
+	margin: 200px 200px 300px 300px; 
+	padding: 50px 50px 50px 50px;
+}
 
 </style>
 
