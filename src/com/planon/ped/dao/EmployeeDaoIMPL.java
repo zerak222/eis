@@ -18,7 +18,7 @@ public class EmployeeDaoIMPL {
 		List<EmployeeData> allEmployees = new ArrayList<>();
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("select * from EMPLOYEE where TEAM_REF=?");
+			ps = con.prepareStatement("select * from EMPLOYEE1 where TEAM_REF=?");
 			ps.setInt(1, aTeamCode);
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -44,7 +44,7 @@ public class EmployeeDaoIMPL {
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement(
-					"insert into EMPLOYEE(NAME,TEAM_REF,EMAIL,PHONE,GENDER,DOB,DESIGNATION,LOCATION) values(?,?,?,?,?,?,?,?)");
+					"insert into EMPLOYEE1(NAME,TEAM_REF,EMAIL,PHONE,GENDER,DOB,DESIGNATION,LOCATION) values(?,?,?,?,?,?,?,?)");
 			ps.setString(1, aEmployee.getName());
 			ps.setInt(2, aEmployee.getTeamRef());
 			ps.setString(3, aEmployee.getEmail());
@@ -69,7 +69,7 @@ public class EmployeeDaoIMPL {
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement(
-					"update EMPLOYEE set NAME=?,TEAM_REF=?,EMAIL=?,PHONE=?,GENDER=?,DOB=?,DESIGNATION=?,LOCATION=? where CODE=?");
+					"update EMPLOYEE1 set NAME=?,TEAM_REF=?,EMAIL=?,PHONE=?,GENDER=?,DOB=?,DESIGNATION=?,LOCATION=? where CODE=?");
 			ps.setString(1, aEmployee.getName());
 			ps.setInt(2, aEmployee.getTeamRef());
 			ps.setString(3, aEmployee.getEmail());
@@ -94,7 +94,7 @@ public class EmployeeDaoIMPL {
 		Connection con = null;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("delete from EMPLOYEE where CODE=?");
+			ps = con.prepareStatement("delete from EMPLOYEE1 where CODE=?");
 			ps.setInt(1, aEmpCode);
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -113,7 +113,7 @@ public class EmployeeDaoIMPL {
 		EmployeeData employeeData = new EmployeeData();
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("select * from EMPLOYEE where CODE=?");
+			ps = con.prepareStatement("select * from EMPLOYEE1 where CODE=?");
 			ps.setInt(1, aEmployeeCode);
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -145,7 +145,7 @@ public class EmployeeDaoIMPL {
 		List<EmployeeData> allEmployeesList = new ArrayList<>();
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("select CODE,NAME,DESIGNATION,EMAIL,PHONE from EMPLOYEE ");
+			ps = con.prepareStatement("select CODE,NAME,DESIGNATION,EMAIL,PHONE from EMPLOYEE1 ");
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				EmployeeData employee = new EmployeeData();

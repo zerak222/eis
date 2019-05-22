@@ -7,9 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.planon.ped.dao.EmployeeDaoIMPL;
-
-
+import com.planon.ped.service.employee.EmployeeService;
 
 /**
  * Servlet implementation class DeleteEmployee
@@ -24,22 +22,30 @@ public class DeleteEmployee extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String sid = request.getParameter("id");
+		String sid = request.getParameter("primaryKey");
 		int id = Integer.parseInt(sid);
-		EmployeeDaoIMPL employeeDao = new EmployeeDaoIMPL();
+		EmployeeService employeeService = new EmployeeService();
 		try {
-			employeeDao.deleteEmployee(id);
-			response.sendRedirect("ShowEmployeeList");
+			employeeService.deleteEmployee(id);
+			String text = "Record has been succesfully deleted!!!";
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(text);
+
 		} catch (SQLException e) {
-			e.printStackTrace();
+			String text = "Error in deleting employee";
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(text);
+			throw new ServletException(e.getMessage());
+
 		}
-		
+
 	}
 
-	 // Method to handle POST method request.
-	   public void doPost(HttpServletRequest request, HttpServletResponse response)
-	      throws ServletException, IOException {
-	      
-	      doGet(request, response);
-	   }
+	// Method to handle POST method request.
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		doGet(request, response);
+	}
 }
