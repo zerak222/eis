@@ -58,7 +58,7 @@ public class AddEmployee extends HttpServlet {
 			employeeService.createEmployee(employee);
 
 		} catch (SQLException | ParseException e) {
-			String message = "Record has not been succesfully saved!!!";
+			String message = "Record has not saved!!!";
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(message);
@@ -70,14 +70,7 @@ public class AddEmployee extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(text);
 		
-		//request.setAttribute("message", "Created new Employee "+name);
-		//response.sendRedirect("AddEmployee.html");
 	}
-	 // Method to handle POST method request.
-	  /* public void doPost(HttpServletRequest request, HttpServletResponse response)
-	      throws ServletException, IOException {
-	      
-	      doGet(request, response);
-	   }*/
+	 
 }
 

@@ -39,7 +39,7 @@ $(document).ready(function() {
 });
 
 function initializeAddEmployeeDialog(){
-	addEmployeeDialog = $('<div class="addEmployeeDialog"></div>')
+	addEmployeeDialog = $('<div id="addEmployeeDialog"></div>')
     .html('<iframe id="frame" style="border: 0px; " src="AddEmployee.html" width="100%" height="100%"></iframe>')
     .dialog({
         autoOpen: false,
@@ -91,7 +91,7 @@ function initializeShowEmployeesDialog() {
 
 function initializeConfirmationDialog() {
 
-	confirmationDialog = $('<div></div>').dialog({
+	confirmationDialog = $('<div id="confirmationDialog"></div>').dialog({
 		autoOpen : false,
 		modal : true,
 		height : 300,
@@ -132,8 +132,7 @@ function saveEmployee(aData) {
 		data : aData,
 		type : 'post',
 		success : function(responseText) {
-			$(addEmployeeForm).find(':input:not(:disabled)').prop('disabled',
-					true)
+			$(addEmployeeForm).find(':input:not(:disabled)').prop('disabled', true)
 			$("#edit").button("option", "disabled", false);
 			confirmationDialog.html(responseText).dialog('open');
 		},
