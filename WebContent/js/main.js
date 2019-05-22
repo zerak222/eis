@@ -2,7 +2,7 @@
 	 var showEmployeeClicked = false; 
 $(document).ready(function() {
 	
-	 addEmployeeDialog = $('<div></div>')
+	 addEmployeeDialog = $('<div id="dialog"></div>')
 	    .html('<iframe id="frame" style="border: 0px; " src="AddEmployee.html" width="100%" height="100%"></iframe>')
 	    .dialog({
 	        autoOpen: false,
@@ -25,7 +25,10 @@ $(document).ready(function() {
 	           id:"cancel",
 	 	       text:"Cancel",
 	           click: function() 
-	              {$( this ).dialog( "close" );}
+	              {        	   
+	        	  // $( this ).dialog( "destroy" );
+	        	   location.reload();
+	              }
 	            
 	         }
 	    ]
