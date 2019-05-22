@@ -199,4 +199,6 @@ cursor:pointer;
 .message{
 	text-color:black;
 }
-
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
+    display: none;
+}
