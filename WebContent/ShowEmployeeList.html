@@ -20,14 +20,14 @@ function getEmployees(){
 		 success : function(allEmployees) {
 		 	
 			 $.each( allEmployees, function( key, value ) {
-				 divHTML +='<li><div class="parent" style="margin-left: 25px; margin-bottom: 55px; display: inline-flex;">'
-				+ '<div class="pull-left"><a href="#employee/'+allEmployees[key].code+'"> <i class="material-icons"style="font-size: 2.5em; color: lightsteelblue;"> person </i></a></div>'
-				+ '<div><div style="color: lightsteelblue">'+allEmployees[key].name+'</div><div style="color: #7C7C7C;">'+allEmployees[key].email+'</div></div>'
-				+ '<div class=" grid-view-action-button" style="color: darkgray"><span> <i id="employee-grid-edit" class="material-icons" style="font-size: 1em; color: darkgray; cursor:pointer" data-primary-key = '+allEmployees[key].code+'> edit </i>	</span> <span> <i id = "employee-actions-grid-delete" class="material-icons" style="font-size: 1em; color: darkgray;cursor:pointer;" data-primary-key = '+allEmployees[key].code+'> delete </i> </span>	</div>'
-				+ '</div></li>'
+				 divHTML +='<div class="column">'
+				+ '<div class="card"><div><a href="#employee/'+allEmployees[key].code+'"><img src="images/user2.png" alt="Employee" style="width:35%;margin-left: 90px;"></a></div>'
+				+'<div style="color: darkgray"><span> <i id="employee-grid-edit" class="material-icons" style="font-size: 1em; color: darkgray; cursor:pointer;margin-left: 260px;" data-primary-key = '+allEmployees[key].code+'> edit </i>	</span> <span> <i id = "employee-actions-grid-delete" class="material-icons" style="font-size: 1em; color: darkgray;cursor:pointer;" data-primary-key = '+allEmployees[key].code+'> delete </i> </span>	</div>'
+				+ '<div class="container"><div style="color: #7C7C7C;"><label>Name :</label>'+allEmployees[key].name+'</div><div style="color: #7C7C7C;"><label>Designation :</label>'+allEmployees[key].designation+'</div><div style="color: #7C7C7C;"><label>Email :</label>'+allEmployees[key].email+'</div><div style="color: #7C7C7C;"><label>Contact :</label>'+allEmployees[key].phone+'</div></div></div>'
+				+ '</div>'
 
 				});
-			 $('#listGridDiv').append(divHTML);
+			 $('.row').append(divHTML);
 		 },
 		 error : function(responseText) {
 			 confirmationDialog.html(responseText).dialog('open');
@@ -36,73 +36,44 @@ function getEmployees(){
 }
 </script>
 <body onload="getEmployees()">
-      <div class = 'eisparent'>
-		<div id="container">
-			<ul class="grid">
-			<li id = "listGridDiv"></li>
-		</ul>
-		</div>
+      <div class = 'row'>
 	</div>
 	<script src="js/main.js"></script> 
 </body>
 <style>
-.employees-grid-view-temp:hover div.grid-view-actions {
-	display: block;
+
+
+div.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
 }
 
-.grid-view-action-button {
-	right: 22px;
+@media screen and (max-width: 650px) {
+  div.column {
+    width: 100%;
+    display: block;
+  }
 }
 
-div.grid-view-actions {
-	display: none;
+div.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.grid-edit-color {
-	color: rgb(118, 114, 114) !important
+div.container {
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight:700;
+  
 }
 
-.grid-delete-color {
-	color: rgb(240, 92, 92)
+div.container::after, div.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
-#container ul {
-	list-style: none;
-}
-
-#container .buttons {
-	margin-bottom: 20px;
-}
-
-#container .list li {
-    margin-left: 350px;
-    height: 60px;
-    list-style-position: inside;
-    border: 1px solid gray;
-    width: 230px;
-    border-style: dotted;
-}
-
-#container .grid li {
-	float: left;
-	height: 50px;
-	list-style-position: inside;
-    border: 1px solid gray;
-    border-style: dotted;
-	
-}
-
- ul {
-    margin-top: -200px;
-    margin-bottom: 10px;
-    margin-left: -350px;
-    margin-right: -250px;
-}
-
-.eisparent {
-	margin: 200px 200px 300px 300px; 
-	padding: 50px 50px 50px 50px;
-}
 
 </style>
 

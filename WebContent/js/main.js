@@ -74,13 +74,16 @@ function initializeAddEmployeeDialog(){
 function initializeShowEmployeesDialog() {
 
 	showEmployeeDialog = $('<div id="showEmployeeDialog"></div>')
-			.html('<iframe id="frame" style="border: 0px; " src="ShowEmployeeList.html" width="100%" height="100%"></iframe>')
+			.html('<iframe id="frame" style="border: 0px;" src="ShowEmployeeList.html" width="100%" height="100%"></iframe>')
 			.dialog({
 				autoOpen : false,
 				modal : true,
 				height : 800,
 				width : 1000,
 				title : 'Employee List',
+				open: function (event, ui) {
+				    $(this).css('overflow', 'hidden');
+				},
 				buttons : {
 					Cancel : function() {
 						$(this).dialog("destroy");
