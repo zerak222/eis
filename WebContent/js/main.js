@@ -1,13 +1,15 @@
- var addEmployeeDialog , confirmationDialog, addEmployeeForm , showEmployeeDialog;
+/*Declaring dialog variables*/ 
+var addEmployeeDialog , confirmationDialog, addEmployeeForm , showEmployeeDialog;
  
 $(document).ready(function() {
 
 	initializeAddEmployeeDialog();
 	initializeConfirmationDialog();
-
+	
+	/*register events for desired action buttons*/
 	$("#edit").button("option", "disabled", true);
 
-	$("#addEmployee").button().on("click", function() {
+	$("#addEmployee").button().on("click", function() {//register add employee button event to render popup
 		addEmployeeDialog.dialog('open');
 		var ifr = document.getElementById("frame");
 		var ifrDoc = ifr.contentDocument || ifr.contentWindow.document;
@@ -24,20 +26,23 @@ $(document).ready(function() {
 		})
 	});
 
-	$("#showEmployees").button().on("click", function() {
+	$("#showEmployees").button().on("click", function() { //register show employee button event to render popup
 		initializeShowEmployeesDialog();
 		showEmployeeDialog.dialog('open');
 	});
 
 	$('i#employee-actions-grid-delete').click(function(aData) {
 		deleteEmployee(aData.target.dataset);
+		//re rendering show employee dialog will be handled later.
 	});
 
 	$('i#employee-grid-edit').click(function(aData) {
+		//edit action will be implemented later
 	});
 
 });
 
+/*Initializes Add Employee dialog content*/
 function initializeAddEmployeeDialog(){
 	addEmployeeDialog = $('<div id="addEmployeeDialog"></div>')
     .html('<iframe id="frame" style="border: 0px; " src="AddEmployee.html" width="100%" height="100%"></iframe>')
@@ -71,6 +76,7 @@ function initializeAddEmployeeDialog(){
     });
 };
 
+/*Initializes show Employee dialog content*/
 function initializeShowEmployeesDialog() {
 
 	showEmployeeDialog = $('<div id="showEmployeeDialog"></div>')
@@ -92,6 +98,7 @@ function initializeShowEmployeesDialog() {
 			});
 };
 
+/*Initializes confirmation dialog overview*/
 function initializeConfirmationDialog() {
 
 	confirmationDialog = $('<div id="confirmationDialog"></div>').dialog({
@@ -109,6 +116,7 @@ function initializeConfirmationDialog() {
 	});
 };
 
+/*Saves employee via service call to AddEmployee servlet*/
 function saveEmployee(aData) {
 	$.ajax({
 		url : 'AddEmployee',
@@ -127,7 +135,7 @@ function saveEmployee(aData) {
 	});
 };
  
-
+/*updates employee data via service call to UpdateEmployee servlet*/
  function updateEmployee(aData) {
 	$.ajax({
 		url : 'UpdateEmployee',
@@ -145,7 +153,7 @@ function saveEmployee(aData) {
 	});
 };
 
-
+/*deletes employee via service call to deleteEmployee servlet*/
  function deleteEmployee(aPK) {
 	$.ajax({
 		url : 'deleteEmployee',
