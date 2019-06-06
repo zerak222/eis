@@ -2,20 +2,38 @@ package com.planon.ped.dto;
 
 import java.sql.Date;
 
-public class EmployeeData extends AbstractData{
-	private int teamRef;
+public class EmployeeData {
 	private String phone;
 	private String email;
 	private String gender;
 	private Date dob;
 	private String designation;
+	private int code;
+	private String name;
+	private String location;
 
-	public int getTeamRef() {
-		return teamRef;
+	public int getCode() {
+		return code;
 	}
 
-	public void setTeamRef(int teamRef) {
-		this.teamRef = teamRef;
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	public String getPhone() {

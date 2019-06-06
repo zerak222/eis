@@ -1,4 +1,4 @@
-package com.planon.ped.controller.employee;
+package com.planon.ped.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.planon.ped.common.IEmployeeService;
 import com.planon.ped.dto.EmployeeData;
-import com.planon.ped.service.employee.EmployeeService;
+import com.planon.ped.service.EmployeeService;
 
 /**
  * Servlet implementation class ShowEmployeeList
@@ -29,7 +30,7 @@ public class ShowEmployeeList extends HttpServlet {
 		Gson gson = new Gson();
 		List<EmployeeData> allEmployeesList = null;
 		try {
-			EmployeeService empServices = new EmployeeService();
+			IEmployeeService empServices = new EmployeeService();
 			allEmployeesList = empServices.getListOfAllEmployees();
 		} catch (SQLException e) {
 			throw new ServletException(e.getMessage()); 

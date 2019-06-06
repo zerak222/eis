@@ -1,4 +1,4 @@
-package com.planon.ped.controller.employee;
+package com.planon.ped.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.planon.ped.service.employee.EmployeeService;
+
+import com.planon.ped.common.IEmployeeService;
+import com.planon.ped.service.EmployeeService;
 
 /**
  * Servlet implementation class DeleteEmployee
@@ -24,7 +26,7 @@ public class DeleteEmployee extends HttpServlet {
 			throws ServletException, IOException {
 		String sid = request.getParameter("primaryKey");
 		int id = Integer.parseInt(sid);
-		EmployeeService employeeService = new EmployeeService();
+		IEmployeeService employeeService = new EmployeeService();
 		try {
 			employeeService.deleteEmployee(id);
 			String text = "Record has been succesfully deleted!!!";

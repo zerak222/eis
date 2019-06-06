@@ -1,4 +1,4 @@
-package com.planon.ped.controller.employee;
+package com.planon.ped.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.planon.ped.common.IEmployeeService;
 import com.planon.ped.dto.EmployeeData;
-import com.planon.ped.service.employee.EmployeeService;
+import com.planon.ped.service.EmployeeService;
 
 /**
  * Servlet implementation class AddEmployee

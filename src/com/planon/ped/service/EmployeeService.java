@@ -1,14 +1,21 @@
-package com.planon.ped.service.employee;
+package com.planon.ped.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.planon.ped.common.IEmployeeService;
 import com.planon.ped.dao.EmployeeDaoIMPL;
 import com.planon.ped.dto.EmployeeData;
-import com.planon.ped.service.AbstractService;
 
-public class EmployeeService extends AbstractService implements IEmployeeService{
+public class EmployeeService  implements IEmployeeService{
 
+	@Override
+	public List<EmployeeData> getListOfAllEmployees() throws SQLException {
+		EmployeeDaoIMPL employeeDao = new EmployeeDaoIMPL();
+		return employeeDao.getListOfAllEmployees();
+
+	}
+	
 	@Override
 	public void createEmployee(EmployeeData aEmployee) throws SQLException {
 		EmployeeDaoIMPL employeeDao = new EmployeeDaoIMPL();
