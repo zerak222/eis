@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Employee</title>
+<link rel="stylesheet" type="text/css" href="css/add-employee.css">
+</head>
+<body>
+	<form id="myForm" onsubmit=>
+      <div class="container">
+           <div class="icon">
+              <img src="images/img_avatar.png" alt="">
+              <p>Employee Details</p>
+          </div>
+           <div class="forms">
+               <img src="images/user2.png" alt="">
+               <input type="text" placeholder="User Name" name="name" required>
+               <img src="images/email.png" alt="">
+               <input type="email" placeholder="Email Id" name="email" required>
+               <img src="images/phone.jpg" alt="">
+               <input type="text" placeholder="Phone Number" name="phone" required>
+               <img src="images/calendar.png" alt="">
+               <input type="date" name="dob" id="datepicker"  required>
+               <img src="images/gender2.jpg" alt="">
+               <div class="radio">
+               <input type="radio" name="gender" value="M" id="gender" required>Male
+               <input type="radio" name="gender" value="F" id="gender">Female
+               </div>
+               <img src="images/designation.png" alt="">
+                <select name="designation" id="designation" required>
+						<option value="INT">INTERN</option>
+						<option value="ASE">ASSOCIATE SOFTWARE ENGINEER</option>
+						<option value="SE">SOFTWARE ENGINEER</option>
+						<option value="ARC">ARCHITECT</option>
+				</select>
+                <img src="images/location.png" alt="">
+                <select name="location" id="location" required>
+						<option value="IN">IN</option>
+						<option value="NL">NL</option>
+				</select>
+               <input type="submit" id="saveEmployee" value="Save Employee">
+               <input type="submit" id="updateEmployee" value="Update Employee" hidden="true" >
+               <input type="reset" value="Clear">
+          </div>
+     </div>
+  </form>
+</body>
+</html>

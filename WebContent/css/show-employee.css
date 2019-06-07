@@ -1,0 +1,30 @@
+/*show employee styling */
+div.column {
+	float: left;
+	width: 33.3%;
+	margin-bottom: 16px;
+	padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+	div.column {
+		width: 100%;
+		display: block;
+	}
+}
+
+div.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+div.container {
+	padding: 0 16px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+div.container::after, div.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}

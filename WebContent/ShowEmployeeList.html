@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"	rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/show-employee.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Show all employees</title>
+</head>
+<script> 
+
+function getEmployees(){
+	var divHTML = "";
+	 $.ajax({
+		 url : 'ShowEmployeeList',
+		 async:false,
+		 type : 'get',
+		 success : function(allEmployees) {
+		 	
+			 $.each( allEmployees, function( key, value ) {
+				 divHTML +='<div class="column">'
+				+ '<div class="card"><div><a href="#employee/'+allEmployees[key].code+'"><img src="images/user2.png" alt="Employee" style="width:35%;margin-left: 90px;"></a></div>'
+				+'<div style="color: darkgray"><span> <i id="employee-grid-edit" class="material-icons" style="font-size: 1em; color: darkgray; cursor:pointer;margin-left: 260px;" data-primary-key = '+allEmployees[key].code+'> edit </i>	</span> <span> <i id = "employee-actions-grid-delete" class="material-icons" style="font-size: 1em; color: darkgray;cursor:pointer;" data-primary-key = '+allEmployees[key].code+'> delete </i> </span>	</div>'
+				+ '<div class="container"><div style="color: #7C7C7C;"><label>Name :</label>'+allEmployees[key].name+'</div><div style="color: #7C7C7C;"><label>Designation :</label>'+allEmployees[key].designation+'</div><div style="color: #7C7C7C;"><label>Email :</label>'+allEmployees[key].email+'</div><div style="color: #7C7C7C;"><label>Contact :</label>'+allEmployees[key].phone+'</div></div></div>'
+				+ '</div>'
+
+				});
+			 $('.row').append(divHTML);
+		 },
+		 error : function(responseText) {
+			 confirmationDialog.html(responseText).dialog('open');
+		 }
+	 });
+}
+</script>
+<body onload="getEmployees()">
+      <div class = 'row'>
+	</div>
+	<script src="js/main.js"></script> 
+</body>
+
+</html>
