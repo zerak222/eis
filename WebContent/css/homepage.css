@@ -174,33 +174,7 @@ to {
 	border: 0;
 }
 
-.editform {
-	cursor: pointer;
-	border: none;
-	background-color: coral;
-	font-size: 20px;
-	float: right;
-	margin: 10px;
-}
 
-#closeBtn {
-	color: #ccc;
-	float: right;
-	font-size: 30px;
-	display: inline;
-}
-
-#closeBtn1 {
-	color: #ccc;
-	float: right;
-	font-size: 30px;
-}
-
-#closeBtn:hover, #closeBtn:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
-}
 
 @
 keyframes modalopen {from { opacity :0
@@ -212,9 +186,7 @@ to {
 }
 
 }
-.message {
-	text-color: black;
-}
+
 
 .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
 	display: none;
